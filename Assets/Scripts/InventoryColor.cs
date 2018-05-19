@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryColor : MonoBehaviour {
-    public static int blueCount;
+    public static int blueCount = 50;
     public static int redCount;
     public static int goldCount;
     public Text blueText;

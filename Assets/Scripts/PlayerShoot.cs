@@ -16,11 +16,11 @@ public class PlayerShoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0) && InventoryColor.redCount > 0)
+        if (Input.GetButtonDown("Fire1") && InventoryColor.redCount > 0)
         {
             fireRed();
             InventoryColor.redCount -= 1;
-        } else if (Input.GetMouseButtonDown(1) && InventoryColor.blueCount > 0)
+        } else if (Input.GetButton("Fire2") && InventoryColor.blueCount > 0)
         {
             fireBlue();
             InventoryColor.blueCount -= 1;

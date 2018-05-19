@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
     public string color;
+    public int ballnum=1;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +21,10 @@ public class Ball : MonoBehaviour {
         if(other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            InventoryColor.addCount(color, 1);
+            if(color.Equals("blue")){
+                InventoryColor.addCount(color,ballnum+100);
+            }
+            InventoryColor.addCount(color, ballnum);
         }
         
     }
