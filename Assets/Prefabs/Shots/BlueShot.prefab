@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114988008709809346}
   - component: {fileID: 54063789474530720}
   - component: {fileID: 135458135199675846}
+  - component: {fileID: 114524760192727814}
   m_Layer: 0
   m_Name: BlueShot
   m_TagString: Untagged
@@ -98,6 +99,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114524760192727814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977356261999042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755debced0bdc1b4496eacba37b84e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: blue
 --- !u!114 &114988008709809346
 MonoBehaviour:
   m_ObjectHideFlags: 1

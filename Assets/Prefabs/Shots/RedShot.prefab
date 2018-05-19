@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 114370485641278722}
   - component: {fileID: 54520274250268566}
   - component: {fileID: 135965198624362882}
+  - component: {fileID: 114162834294172098}
+  - component: {fileID: 135773760985035660}
   m_Layer: 0
   m_Name: RedShot
   m_TagString: Untagged
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1691449718240868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.97, y: 6.47, z: 5.76}
+  m_LocalPosition: {x: 3.1000338, y: 15.409273, z: 60.68565}
   m_LocalScale: {x: 0.7677021, y: 0.76770294, z: 0.76770294}
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,6 +100,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114162834294172098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1691449718240868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755debced0bdc1b4496eacba37b84e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: red
 --- !u!114 &114370485641278722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: red
---- !u!135 &135965198624362882
+--- !u!135 &135773760985035660
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -122,3 +136,15 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135965198624362882
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1691449718240868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.80361754
+  m_Center: {x: 0, y: 0, z: -0.023463503}
