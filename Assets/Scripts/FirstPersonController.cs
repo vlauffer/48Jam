@@ -42,6 +42,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
         public static bool LockView;
+        public static bool hasDoubleJump;
+        private int jumpCount;
 
         // Use this for initialization
         private void Start()
@@ -57,20 +59,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             LockView = false;
+            hasDoubleJump = false;
+            jumpCount = 0;
         }
 
 
         // Update is called once per frame
         private void Update()
         {
-            if (!LockView) { 
-                RotateView();
+            if (LockView)
+            {
+                m_MouseLook.lockCursor = false;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            } else
+            {
+                m_MouseLook.lockCursor = true;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
-            {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
@@ -116,24 +124,37 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (m_CharacterController.isGrounded)
             {
                 m_MoveDir.y = -m_StickToGroundForce;
-
-                if (m_Jump)
+                m_Jump = true;
+                if (CrossPlatformInputManager.GetButtonDown("Jump"))
                 {
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
-                    m_Jump = false;
                     m_Jumping = true;
                 }
             }
             else
             {
                 m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
+                if (CrossPlatformInputManager.GetButtonDown("Jump") && m_Jump)
+                {
+                    if (jumpCount == 0 && hasDoubleJump)
+                    {
+                        m_MoveDir.y = m_JumpSpeed;
+                        PlayJumpSound();
+                        jumpCount++;
+                    }
+                    else
+                    {
+                        m_Jump = false;
+                        jumpCount = 0;
+                    }
+                }
+               
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
-
             m_MouseLook.UpdateCursorLock();
         }
 
@@ -192,7 +213,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
-                                      (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
+                                        (speed * (m_IsWalking ? 1f : m_RunstepLenghten)));
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
             }
@@ -240,7 +261,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+            m_MouseLook.LookRotation(transform, m_Camera.transform);
         }
 
 

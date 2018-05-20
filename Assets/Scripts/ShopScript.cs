@@ -31,6 +31,8 @@ public class ShopScript : MonoBehaviour {
         if(other.tag == "Player")
         {
             show();
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerLook>().enabled = false;
+            UnityStandardAssets.Characters.FirstPerson.FirstPersonController.LockView = true;
         }
     }
 
@@ -39,6 +41,8 @@ public class ShopScript : MonoBehaviour {
         if(other.tag == "Player")
         {
             hide();
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PlayerLook>().enabled = true;
+            UnityStandardAssets.Characters.FirstPerson.FirstPersonController.LockView = false;
         }
     }
 }

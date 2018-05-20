@@ -43,4 +43,41 @@ public class InventoryColor : MonoBehaviour {
             goldCount=0;
         }
     }
+
+    public void buyBlue()
+    {
+        if(goldCount > 0)
+        {
+            goldCount -= 1;
+            blueCount += 100;
+        }
+    }
+
+    public void buyRed()
+    {
+        if (goldCount > 0)
+        {
+            goldCount -= 1;
+            redCount += 20;
+        }
+    }
+
+    public void buyDoubleJump()
+    {
+        if (goldCount > 4)
+        {
+            goldCount -= 5;
+            UnityStandardAssets.Characters.FirstPerson.FirstPersonController.hasDoubleJump = true;
+        }
+        
+    }
+
+    public void buyGoldenGun()
+    {
+        if (goldCount > 49)
+        {
+            goldCount -= 50;
+            ArmColor.goldenGun();
+        }
+    }
 }
