@@ -45,6 +45,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public static bool hasDoubleJump;
         private int jumpCount;
 
+        bool usedDub=false;
+        bool useTheJump=false;
+
         // Use this for initialization
         private void Start()
         {
@@ -61,6 +64,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             LockView = false;
             hasDoubleJump = false;
             jumpCount = 0;
+            
         }
 
 
@@ -83,6 +87,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
+
+            // if(!m_CharacterController.isGrounded&&CrossPlatformInputManager.GetButtonDown("Jump")&&hasDoubleJump&&!usedDub){
+            //     usedDub=true;
+            //     useTheJump=true;
+            // }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
@@ -127,6 +136,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (m_CharacterController.isGrounded)
             {
+                useTheJump=false;
                 m_MoveDir.y = -m_StickToGroundForce;
                 // m_Jump = true;
                 if (m_Jump)
@@ -136,6 +146,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_Jump=false;
                     m_Jumping = true;
                 }
+            }else if(usedDub&&useTheJump){
+                m_MoveDir.y = m_JumpSpeed;
+                    PlayJumpSound();
+                usedDub=false;
+            
+
             }
             else
             {
