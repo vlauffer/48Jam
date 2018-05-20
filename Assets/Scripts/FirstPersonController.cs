@@ -79,6 +79,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Cursor.lockState = CursorLockMode.Locked;
             }
             // the jump state needs to read here to make sure it is not missed
+            if (!m_Jump)
+            {
+                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            }
 
             if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
             {
@@ -124,31 +128,32 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (m_CharacterController.isGrounded)
             {
                 m_MoveDir.y = -m_StickToGroundForce;
-                m_Jump = true;
-                if (CrossPlatformInputManager.GetButtonDown("Jump"))
+                // m_Jump = true;
+                if (m_Jump)
                 {
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
+                    m_Jump=false;
                     m_Jumping = true;
                 }
             }
             else
             {
                 m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
-                if (CrossPlatformInputManager.GetButtonDown("Jump") && m_Jump)
-                {
-                    if (jumpCount == 0 && hasDoubleJump)
-                    {
-                        m_MoveDir.y = m_JumpSpeed;
-                        PlayJumpSound();
-                        jumpCount++;
-                    }
-                    else
-                    {
-                        m_Jump = false;
-                        jumpCount = 0;
-                    }
-                }
+                // if (CrossPlatformInputManager.GetButtonDown("Jump") && m_Jump)
+                // {
+                //     if (jumpCount == 0 && hasDoubleJump)
+                //     {
+                //         m_MoveDir.y = m_JumpSpeed;
+                //         PlayJumpSound();
+                //         jumpCount++;
+                //     }
+                //     else
+                //     {
+                //         m_Jump = false;
+                //         jumpCount = 0;
+                //     }
+                // }
                
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
