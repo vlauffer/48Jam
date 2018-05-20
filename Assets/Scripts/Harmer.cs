@@ -10,7 +10,7 @@ public class Harmer : MonoBehaviour {
 			if(InventoryColor.goldCount>0){
 				InventoryColor.NoGold();
 			}else{
-				Debug.Log("player reset");
+				col.gameObject.GetComponent<Reseter>().ResetPlayer();
 			}
 		}
 		
