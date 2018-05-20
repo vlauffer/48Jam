@@ -36,4 +36,11 @@ public class InventoryColor : MonoBehaviour {
             goldCount += number;
         }
     }
+
+    public static void NoGold(){
+        goldCount-=10;
+        if(goldCount<0){
+            goldCount=0;
+        }
+    }
 }

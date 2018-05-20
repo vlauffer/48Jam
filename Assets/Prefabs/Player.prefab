@@ -91,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718822155789420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.33, z: 0}
+  m_LocalPosition: {x: 0.46179238, y: 4.7, z: 5.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4206056373437892}
@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 1318858088670140}
   m_LocalRotation: {x: 0.63965017, y: -0.06306252, z: 0.1781045, w: 0.7450837}
   m_LocalPosition: {x: 0.432, y: -0.24, z: 0.507}
-  m_LocalScale: {x: 0.29045704, y: 0.5984744, z: 0.29045704}
+  m_LocalScale: {x: 0.21883947, y: 0.45052624, z: 0.21883948}
   m_Children:
   - {fileID: 4307191708676610}
   m_Father: {fileID: 4206056373437892}
@@ -277,7 +277,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.11
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsWalking: 0
   m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_RunSpeed: 8.02
   m_RunstepLenghten: 0.213
   m_JumpSpeed: 5
   m_StickToGroundForce: 1
@@ -483,6 +483,9 @@ MonoBehaviour:
   blueShot: {fileID: 1977356261999042, guid: f89e7ab077afce3409da8ccad16d28e1, type: 2}
   shotSpawn: {fileID: 4307191708676610}
   cameraForward: {fileID: 4206056373437892}
+  fireRate: 20
+  fireReady: 100
+  fireCount: 0
 --- !u!114 &114968103976923140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -528,7 +531,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 82.59
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001

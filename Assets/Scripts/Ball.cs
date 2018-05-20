@@ -22,7 +22,10 @@ public class Ball : MonoBehaviour {
         {
             Destroy(gameObject);
             if(color.Equals("blue")){
-                InventoryColor.addCount(color,ballnum+100);
+                InventoryColor.addCount(color,ballnum+6);
+            }
+            if(color.Equals("gold")){
+                InventoryColor.addCount(color,ballnum+6);
             }
             InventoryColor.addCount(color, ballnum);
         }

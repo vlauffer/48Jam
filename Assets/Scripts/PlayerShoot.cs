@@ -9,9 +9,13 @@ public class PlayerShoot : MonoBehaviour {
     public Transform shotSpawn;
     public Transform cameraForward;
 
+    public float fireRate=20;
+    public float fireReady=100;
+    public float fireCount;
+
 	// Use this for initialization
 	void Start () {
-		
+		fireCount=fireReady;
 	}
 	
 	// Update is called once per frame
@@ -20,10 +24,15 @@ public class PlayerShoot : MonoBehaviour {
         {
             fireRed();
             InventoryColor.redCount -= 1;
-        } else if (Input.GetButton("Fire2") && InventoryColor.blueCount > 0)
+        } else if (Input.GetButton("Fire2") && InventoryColor.blueCount > 0 && fireCount>=fireReady)
         {
             fireBlue();
+            fireCount=0;
             InventoryColor.blueCount -= 1;
+        }
+
+        if(fireCount<fireReady){
+            fireCount+=fireRate;
         }
 
 	}

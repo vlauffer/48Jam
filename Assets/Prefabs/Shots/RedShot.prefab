@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 135773760985035660}
   m_Layer: 0
   m_Name: RedShot
-  m_TagString: Untagged
+  m_TagString: red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,9 +55,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e301e2674400e264bab495bb1b5ce751, type: 2}
   m_StaticBatchInfo:
@@ -70,6 +72,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -112,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: red
+  ballnum: 1
 --- !u!114 &114370485641278722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: red
+  ballnum: 1
 --- !u!135 &135773760985035660
 SphereCollider:
   m_ObjectHideFlags: 1
